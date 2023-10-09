@@ -1,2 +1,10 @@
 <!-- Book List -->
-<app-book *ngFor="let book of apiBookResults" [book]="book"></app-book>
+<div class="row" *ngFor="let book of apiBookResults">
+  <div class="col-md-9">
+    <!-- API Book Results List -->
+    <app-book [book]="book"></app-book>
+
+    <!-- Save Book Button -->
+    <button class="book-save-btn" (click)="onSaveBook(book)">&plus;</button>
+  </div>
+</div>
