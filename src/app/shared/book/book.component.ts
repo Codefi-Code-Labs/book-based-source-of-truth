@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Book } from './book.model';
+import { BookshelfService } from 'src/app/bookshelf-page/bookshelf.service';
 
 @Component({
   selector: 'app-book',
@@ -9,9 +10,12 @@ import { Book } from './book.model';
 export class BookComponent {
   // * Properties
   @Input() book: Book;
-  @Output() bookSelected = new EventEmitter<Book>();
 
   // * Constructor
+  constructor(private bookshelfService: BookshelfService) {}
 
   // * Methods
+  onBookSelected() {
+    this.bookshelfService.selectedBook.emit(this.book);
+  }
 }
