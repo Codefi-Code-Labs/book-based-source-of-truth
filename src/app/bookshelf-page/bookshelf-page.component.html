@@ -1,12 +1,16 @@
-<div class="row justify-between">
+<div class="row justify-content-between">
   <!-- Saved Book List (Half Width of Container) -->
   <div class="col-md-6">
     <h1>My Saved Books</h1>
-    <app-saved-book-list></app-saved-book-list>
+    <app-saved-book-list
+      (bookSelected)="selectedBook = $event"
+    ></app-saved-book-list>
   </div>
 
   <!-- Single Book Details (Half Width of Container) -->
-  <div class="col-md-6">
-    <app-single-book-details></app-single-book-details>
+  <div class="col-md-5 mt-5" *ngIf="selectedBook">
+    <app-single-book-details
+      [bookDetails]="selectedBook"
+    ></app-single-book-details>
   </div>
 </div>

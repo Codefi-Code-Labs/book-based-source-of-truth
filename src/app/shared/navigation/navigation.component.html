@@ -27,11 +27,21 @@
       <!-- Main Navigation Items -->
       <ul class="navbar-nav mt-lg-0 mr-auto mt-2">
         <li class="nav-item">
-          <a class="nav-link" style="cursor: pointer">My Bookshelf</a>
+          <a
+            class="nav-link"
+            style="cursor: pointer"
+            (click)="onSelectPage('bookshelf')"
+            >My Bookshelf</a
+          >
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" style="cursor: pointer">API Library</a>
+          <a
+            class="nav-link"
+            style="cursor: pointer"
+            (click)="onSelectPage('library')"
+            >API Library</a
+          >
         </li>
       </ul>
 

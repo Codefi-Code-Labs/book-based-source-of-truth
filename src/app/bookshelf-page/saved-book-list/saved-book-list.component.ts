@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Book } from '../../shared/book/book.model';
 
 @Component({
@@ -7,6 +7,9 @@ import { Book } from '../../shared/book/book.model';
   styleUrls: ['./saved-book-list.component.css'],
 })
 export class SavedBookListComponent {
+  // * Properties
+  @Output() bookSelected = new EventEmitter<Book>();
+
   mySavedBooks: Book[] = [
     new Book(
       '1984',
@@ -24,4 +27,11 @@ export class SavedBookListComponent {
       'https://source.unsplash.com/150x150/?gatsby'
     ),
   ];
+
+  // * Constructor
+
+  // * Methods
+  handleBookSelected(selectedBook: Book) {
+    this.bookSelected.emit(selectedBook);
+  }
 }

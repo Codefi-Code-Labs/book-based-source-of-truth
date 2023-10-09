@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+
+export type PageNameT = 'bookshelf' | 'library';
 
 @Component({
   selector: 'app-navigation',
@@ -6,6 +8,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./navigation.component.css'],
 })
 export class NavigationComponent {
+  // * Emitters
+  @Output() selectedPage = new EventEmitter<PageNameT>();
+
+  // * Properties
   collapsed: boolean = true;
   show: boolean = false;
+
+  // * Methods
+  onSelectPage(pageName: PageNameT) {
+    this.selectedPage.emit(pageName);
+  }
 }
