@@ -1,17 +1,19 @@
 <!-- Navigation -->
-<app-navigation></app-navigation>
+<app-navigation (selectedPage)="currentPage = $event"></app-navigation>
 
 <!-- Main Content -->
 <div class="container">
   <div class="row">
     <div class="col-md-12 mx-auto">
       <!-- Bookshelf Page -->
-      <app-bookshelf-page></app-bookshelf-page>
+      <app-bookshelf-page
+        *ngIf="currentPage === 'bookshelf'"
+      ></app-bookshelf-page>
 
       <hr class="my-4" />
 
       <!-- Library Page -->
-      <app-library-page></app-library-page>
+      <app-library-page *ngIf="currentPage === 'library'"></app-library-page>
     </div>
   </div>
 </div>
