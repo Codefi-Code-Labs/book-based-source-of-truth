@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Book } from '../../shared/book/book.model';
+import { BookshelfService } from '../bookshelf.service';
 
 @Component({
   selector: 'app-saved-book-list',
@@ -9,29 +10,21 @@ import { Book } from '../../shared/book/book.model';
 export class SavedBookListComponent {
   // * Properties
   @Output() bookSelected = new EventEmitter<Book>();
-
-  mySavedBooks: Book[] = [
-    new Book(
-      '1984',
-      'George Orwell',
-      'https://source.unsplash.com/150x150/?1984'
-    ),
-    new Book(
-      'To Kill a Mockingbird',
-      'Harper Lee',
-      'https://source.unsplash.com/150x150/?mockingbird'
-    ),
-    new Book(
-      'The Great Gatsby',
-      'F. Scott Fitzgerald',
-      'https://source.unsplash.com/150x150/?gatsby'
-    ),
-  ];
+  mySavedBooks: Book[] = [];
 
   // * Constructor
+  constructor(public bookshelfService: BookshelfService) {}
 
-  // * Methods
-  handleBookSelected(selectedBook: Book) {
-    this.bookSelected.emit(selectedBook);
+  // * Lifecycle
+  ngOnInit() {
+    // Set the initial list of books
+    this.mySavedBooks = this.bookshelfService.getSavedBooks();
+
+    // Subscribe to the bookListChanged event
+    this.bookshelfService.bookListChanged.subscribe(
+      (updatedBookList: Book[]) => {
+        this.mySavedBooks = updatedBookList;
+      }
+    );
   }
 }

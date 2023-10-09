@@ -1,9 +1,15 @@
 <!-- Book List -->
-<app-book
-  *ngFor="let book of mySavedBooks"
-  [book]="book"
-  (bookSelected)="handleBookSelected($event)"
-></app-book>
+<div class="row" *ngFor="let book of mySavedBooks; let i = index">
+  <div class="col-md-12 book-list-container">
+    <app-book [book]="book"></app-book>
+    <button
+      class="book-remove-btn"
+      (click)="this.bookshelfService.deleteBookByIndex(i)"
+    >
+      &minus;
+    </button>
+  </div>
+</div>
 
 <hr />
 

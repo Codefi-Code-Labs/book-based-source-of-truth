@@ -10,6 +10,7 @@ import { ApiResultsListComponent } from './library-page/api-results-list/api-res
 import { ApiSearchComponent } from './library-page/api-search/api-search.component';
 import { SavedBookListComponent } from './bookshelf-page/saved-book-list/saved-book-list.component';
 import { SingleBookDetailsComponent } from './bookshelf-page/single-book-details/single-book-details.component';
+import { DropdownDirective } from './shared/directives/dropdown.directive';
 
 @NgModule({
   declarations: [
@@ -21,12 +22,11 @@ import { SingleBookDetailsComponent } from './bookshelf-page/single-book-details
     ApiResultsListComponent,
     ApiSearchComponent,
     SavedBookListComponent,
-    SingleBookDetailsComponent
+    SingleBookDetailsComponent,
+    DropdownDirective,
   ],
-  imports: [
-    BrowserModule
-  ],
+  imports: [BrowserModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

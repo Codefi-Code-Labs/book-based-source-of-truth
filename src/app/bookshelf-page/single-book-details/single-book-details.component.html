@@ -27,7 +27,24 @@
 
 <!-- Edit Book Button -->
 <div class="row">
-  <div class="col-md-12">
-    <button type="button" class="btn btn-primary">Edit Book</button>
+  <div class="col-md-12 dropdown" appDropdown>
+    <!-- Dropdown Button -->
+    <button
+      type="button"
+      class="btn btn-primary dropdown-toggle"
+      id="dropdownMenuButton"
+      data-toggle="dropdown"
+      role="button"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
+      Edit Book
+    </button>
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+      <a class="dropdown-item" style="cursor: pointer">Update Book</a>
+      <a class="dropdown-item" style="cursor: pointer">Delete Book</a>
+    </div>
   </div>
 </div>

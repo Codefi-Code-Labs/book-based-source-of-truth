@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { Book } from '../../shared/book/book.model';
+import { LibraryService } from '../library.service';
+import { BookshelfService } from 'src/app/bookshelf-page/bookshelf.service';
 
 @Component({
   selector: 'app-api-results-list',
@@ -7,21 +9,23 @@ import { Book } from '../../shared/book/book.model';
   styleUrls: ['./api-results-list.component.css'],
 })
 export class ApiResultsListComponent {
-  apiBookResults: Book[] = [
-    new Book(
-      'Pride and Prejudice',
-      'Jane Austen',
-      'https://source.unsplash.com/150x150/?romance'
-    ),
-    new Book(
-      'Moby-Dick',
-      'Herman Melville',
-      'https://source.unsplash.com/150x150/?whale'
-    ),
-    new Book(
-      'Brave New World',
-      'Aldous Huxley',
-      'https://source.unsplash.com/150x150/?brave-new-world'
-    ),
-  ];
+  // * Properties
+  apiBookResults: Book[] = [];
+
+  // * Constructor
+  constructor(
+    private libraryService: LibraryService,
+    private bookshelfService: BookshelfService
+  ) {}
+
+  // * Lifecycle
+  ngOnInit() {
+    // Set the initial list of books
+    this.apiBookResults = this.libraryService.getAPIBooks();
+  }
+
+  // * Methods
+  onSaveBook(book: Book) {
+    this.bookshelfService.addBook(book);
+  }
 }
