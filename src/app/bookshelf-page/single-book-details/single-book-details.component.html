@@ -1,21 +1,25 @@
 <!-- Title -->
 <div class="row">
   <div class="col-md-12">
-    <h2>Book Title</h2>
+    <h2>{{ bookDetails.title }}</h2>
   </div>
 </div>
 
 <!-- Author -->
 <div class="row">
   <div class="col-md-12">
-    <h3>Author</h3>
+    <h3>{{ bookDetails.author }}</h3>
   </div>
 </div>
 
 <!-- Cover Image -->
 <div class="row">
   <div class="col-md-12">
-    <img src="" alt="" class="img-responsive" />
+    <img
+      src="{{ bookDetails.coverImg }}"
+      alt="{{ bookDetails.title }}"
+      class="img-responsive"
+    />
   </div>
 </div>
 

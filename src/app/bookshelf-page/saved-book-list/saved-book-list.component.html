@@ -1,5 +1,9 @@
 <!-- Book List -->
-<app-book *ngFor="let book of mySavedBooks" [book]="book"></app-book>
+<app-book
+  *ngFor="let book of mySavedBooks"
+  [book]="book"
+  (bookSelected)="handleBookSelected($event)"
+></app-book>
 
 <hr />
 

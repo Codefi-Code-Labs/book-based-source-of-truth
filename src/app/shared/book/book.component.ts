@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Book } from './book.model';
 
 @Component({
@@ -9,6 +9,7 @@ import { Book } from './book.model';
 export class BookComponent {
   // * Properties
   @Input() book: Book;
+  @Output() bookSelected = new EventEmitter<Book>();
 
   // * Constructor
 
