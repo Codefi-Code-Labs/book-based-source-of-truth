@@ -8,16 +8,19 @@ export class LibraryService {
   // * Properties
   apiBookResults: Book[] = [
     new Book(
+      111,
       'Pride and Prejudice',
       'Jane Austen',
       'https://source.unsplash.com/150x150/?romance'
     ),
     new Book(
+      222,
       'Moby-Dick',
       'Herman Melville',
       'https://source.unsplash.com/150x150/?whale'
     ),
     new Book(
+      333,
       'Brave New World',
       'Aldous Huxley',
       'https://source.unsplash.com/150x150/?brave-new-world'

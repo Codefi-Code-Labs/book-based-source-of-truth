@@ -27,4 +27,15 @@ export class SavedBookListComponent {
       }
     );
   }
+
+  // * Methods
+  onRemoveBook(bookId: number) {
+    this.bookshelfService.deleteBookById(bookId);
+
+    // TODO: Route to '/bookshelf'
+  }
+
+  onNavigateToNewBookRoute() {
+    // TODO: Route to '/bookshelf/new'
+  }
 }
