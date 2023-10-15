@@ -8,16 +8,19 @@ export class BookshelfService {
   // * Properties
   private mySavedBooks: Book[] = [
     new Book(
+      123,
       '1984',
       'George Orwell',
       'https://source.unsplash.com/150x150/?1984'
     ),
     new Book(
+      456,
       'To Kill a Mockingbird',
       'Harper Lee',
       'https://source.unsplash.com/150x150/?mockingbird'
     ),
     new Book(
+      789,
       'The Great Gatsby',
       'F. Scott Fitzgerald',
       'https://source.unsplash.com/150x150/?gatsby'
@@ -38,7 +41,11 @@ export class BookshelfService {
   }
 
   // READ ONE - get one book
-  getBookById(id: number) {}
+  getBookById(id: number) {
+    const foundBook = this.mySavedBooks.find((book) => book.id === id);
+
+    return foundBook;
+  }
 
   // CREATE - add a new book
   addBook(newBook: Book) {
@@ -50,11 +57,11 @@ export class BookshelfService {
   updateBook(updatedBook: Book) {}
 
   // DELETE - delete an existing book
-  deleteBookByIndex(idx: number) {
-    // If the index is not found, indexOf() returns -1
-    if (idx !== -1) {
-      this.mySavedBooks.splice(idx, 1); // splice() removes elements from an array and returns the removed elements
-      this.bookListChanged.emit(this.mySavedBooks.slice()); // emit the updated list of books
-    }
+  deleteBookById(id: number) {
+    const newBooks = this.mySavedBooks.filter((book) => book.id !== id);
+
+    console.log('newBooks:', newBooks);
+    this.mySavedBooks = newBooks;
+    this.bookListChanged.emit(this.mySavedBooks.slice());
   }
 }

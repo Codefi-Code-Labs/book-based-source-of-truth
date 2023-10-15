@@ -1,11 +1,8 @@
 <!-- Book List -->
-<div class="row" *ngFor="let book of mySavedBooks; let i = index">
+<div class="row" *ngFor="let book of mySavedBooks">
   <div class="col-md-12 book-list-container">
     <app-book [book]="book"></app-book>
-    <button
-      class="book-remove-btn"
-      (click)="this.bookshelfService.deleteBookByIndex(i)"
-    >
+    <button class="book-remove-btn" (click)="onRemoveBook(book.id)">
       &minus;
     </button>
   </div>
@@ -16,6 +13,8 @@
 <!-- Add Book Button -->
 <div class="row">
   <div class="col-md-12">
-    <button class="btn btn-primary">Add New Book</button>
+    <button class="btn btn-primary" (click)="navigateToNewBookRoute()">
+      Add New Book
+    </button>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { Book } from '../../shared/book/book.model';
 import { BookshelfService } from '../bookshelf.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-saved-book-list',
@@ -13,7 +14,10 @@ export class SavedBookListComponent {
   mySavedBooks: Book[] = [];
 
   // * Constructor
-  constructor(public bookshelfService: BookshelfService) {}
+  constructor(
+    public bookshelfService: BookshelfService,
+    private router: Router
+  ) {}
 
   // * Lifecycle
   ngOnInit() {
@@ -26,5 +30,15 @@ export class SavedBookListComponent {
         this.mySavedBooks = updatedBookList;
       }
     );
+  }
+
+  // * Methods
+  onRemoveBook(bookId: number) {
+    this.bookshelfService.deleteBookById(bookId);
+    this.router.navigate(['bookshelf']);
+  }
+
+  navigateToNewBookRoute() {
+    this.router.navigate(['bookshelf', 'new']);
   }
 }
