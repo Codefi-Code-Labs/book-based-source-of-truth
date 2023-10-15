@@ -1,6 +1,7 @@
-<button
+<a
   class="mb-3 list-group-item w-100 d-flex justify-content-between align-items-center shadow-sm rounded"
-  (click)="onBookSelected()"
+  style="cursor: pointer"
+  [routerLink]="[book.id]"
 >
   <!-- Left Side - Information -->
   <div class="d-flex flex-column align-items-start">
@@ -17,4 +18,4 @@
       style="max-height: 75px"
     />
   </div>
-</button>
+</a>

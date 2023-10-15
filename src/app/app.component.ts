@@ -6,6 +6,4 @@ import { PageNameT } from './shared/navigation/navigation.component';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  currentPage: PageNameT = 'bookshelf';
-}
+export class AppComponent {}

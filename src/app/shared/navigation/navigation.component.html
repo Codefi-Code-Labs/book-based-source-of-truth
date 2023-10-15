@@ -30,7 +30,8 @@
           <a
             class="nav-link"
             style="cursor: pointer"
-            (click)="onSelectPage('bookshelf')"
+            routerLink="/bookshelf"
+            routerLinkActive="active"
             >My Bookshelf</a
           >
         </li>
@@ -39,7 +40,8 @@
           <a
             class="nav-link"
             style="cursor: pointer"
-            (click)="onSelectPage('library')"
+            routerLink="/library"
+            routerLinkActive="active"
             >API Library</a
           >
         </li>
@@ -50,10 +52,10 @@
         <li class="nav-item dropdown">
           <a
             class="nav-link dropdown-toggle"
-            href="#"
             id="navbarDropdownMenuLink"
             data-toggle="dropdown"
             aria-haspopup="true"
+            style="cursor: pointer"
             [attr.aria-expanded]="show"
             (click)="show = !show"
           >

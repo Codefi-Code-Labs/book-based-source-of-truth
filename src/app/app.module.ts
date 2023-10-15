@@ -11,6 +11,8 @@ import { ApiSearchComponent } from './library-page/api-search/api-search.compone
 import { SavedBookListComponent } from './bookshelf-page/saved-book-list/saved-book-list.component';
 import { SingleBookDetailsComponent } from './bookshelf-page/single-book-details/single-book-details.component';
 import { DropdownDirective } from './shared/directives/dropdown.directive';
+import { AppRoutingModule } from './app-routing.module';
+import { SingleBookFormComponent } from './bookshelf-page/single-book-form/single-book-form.component';
 
 @NgModule({
   declarations: [
@@ -24,8 +26,9 @@ import { DropdownDirective } from './shared/directives/dropdown.directive';
     SavedBookListComponent,
     SingleBookDetailsComponent,
     DropdownDirective,
+    SingleBookFormComponent,
   ],
-  imports: [BrowserModule],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
