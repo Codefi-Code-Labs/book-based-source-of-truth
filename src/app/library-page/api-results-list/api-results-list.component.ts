@@ -27,5 +27,6 @@ export class ApiResultsListComponent {
   // * Methods
   onSaveBook(book: Book) {
     this.bookshelfService.addBook(book);
+    this.libraryService.setAddBookNotification(book);
   }
 }
