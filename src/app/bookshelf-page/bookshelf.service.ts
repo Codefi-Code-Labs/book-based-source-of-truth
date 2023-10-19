@@ -1,5 +1,6 @@
-import { EventEmitter, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Book } from '../shared/book/book.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -28,8 +29,7 @@ export class BookshelfService {
   ];
 
   // * Events
-  selectedBook = new EventEmitter<Book>();
-  bookListChanged = new EventEmitter<Book[]>();
+  bookListChanged = new Subject<Book[]>();
 
   // * Constructor
   constructor() {}
@@ -50,7 +50,7 @@ export class BookshelfService {
   // CREATE - add a new book
   addBook(newBook: Book) {
     this.mySavedBooks.push(newBook); // push() adds one or more elements to the end of an array and returns the new length of the array
-    this.bookListChanged.emit(this.mySavedBooks.slice()); // emit the updated list of books
+    this.bookListChanged.next(this.mySavedBooks.slice()); // next the updated list of books
   }
 
   // UPDATE - update an existing book
@@ -62,6 +62,6 @@ export class BookshelfService {
 
     console.log('newBooks:', newBooks);
     this.mySavedBooks = newBooks;
-    this.bookListChanged.emit(this.mySavedBooks.slice());
+    this.bookListChanged.next(this.mySavedBooks.slice());
   }
 }

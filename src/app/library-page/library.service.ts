@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../shared/book/book.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LibraryService {
+  // * Events/Subjects
+  addBookNotification = new Subject<Book>();
+
   // * Properties
   apiBookResults: Book[] = [
     new Book(
@@ -34,5 +38,9 @@ export class LibraryService {
   // READ ALL - Get all books from the library
   getAPIBooks() {
     return this.apiBookResults.slice();
+  }
+
+  setAddBookNotification(book: Book) {
+    this.addBookNotification.next(book);
   }
 }

@@ -13,6 +13,7 @@ import { SingleBookDetailsComponent } from './bookshelf-page/single-book-details
 import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { AppRoutingModule } from './app-routing.module';
 import { SingleBookFormComponent } from './bookshelf-page/single-book-form/single-book-form.component';
+import { AddBookNotificationComponent } from './library-page/add-book-notification/add-book-notification.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { SingleBookFormComponent } from './bookshelf-page/single-book-form/singl
     SingleBookDetailsComponent,
     DropdownDirective,
     SingleBookFormComponent,
+    AddBookNotificationComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
