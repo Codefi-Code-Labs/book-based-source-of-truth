@@ -1,0 +1,4 @@
+/* Any input on the form that has been touched AND is invalid */
+form .ng-touched.ng-invalid {
+  border: 1px solid crimson;
+}

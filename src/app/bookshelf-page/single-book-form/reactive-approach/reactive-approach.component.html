@@ -1,0 +1,84 @@
+<!-- * Reactive Form Approach * -->
+<form [formGroup]="bookDetails" (ngSubmit)="onFormSubmit()">
+  <!-- Title -->
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      class="form-control"
+      formControlName="title"
+    />
+
+    <!-- Error Message -->
+    <span
+      *ngIf="
+        bookDetails.get('title').touched && !bookDetails.get('title').valid
+      "
+      class="help-block text-danger"
+      >Please enter a valid title!</span
+    >
+  </div>
+
+  <!-- Author -->
+  <div class="form-group">
+    <label for="author">Author</label>
+    <input
+      type="text"
+      id="author"
+      name="author"
+      class="form-control"
+      formControlName="author"
+    />
+
+    <!-- Error Message -->
+    <span
+      *ngIf="
+        bookDetails.get('author').touched && !bookDetails.get('author').valid
+      "
+      class="help-block text-danger"
+      >Please enter a valid author!</span
+    >
+  </div>
+
+  <!-- Cover Image -->
+  <div class="form-group">
+    <label for="coverImg">Cover Image Path</label>
+    <input
+      type="text"
+      id="coverImg"
+      name="coverImg"
+      class="form-control"
+      formControlName="coverImg"
+    />
+
+    <!-- Error Message -->
+    <span
+      *ngIf="
+        bookDetails.get('coverImg').touched &&
+        !bookDetails.get('coverImg').valid
+      "
+      class="help-block text-danger"
+      >Please enter a valid URL Image Path!</span
+    >
+  </div>
+
+  <!-- Submit -->
+  <button [disabled]="!bookDetails.valid" class="btn btn-primary" type="submit">
+    Create
+  </button>
+</form>
+
+<!-- TODO: RESULTS (Temp: TSK) -->
+<div class="row mt-4" *ngIf="isFormSubmitted">
+  <div class="col-xs-12">
+    <h3>Title: {{ bookDetails.value.title }}</h3>
+    <h3>Author: {{ bookDetails.value.author }}</h3>
+    <img
+      [src]="bookDetails.value.coverImg"
+      alt="Cover Image"
+      style="max-width: 200px; max-height: 200px"
+    />
+  </div>
+</div>

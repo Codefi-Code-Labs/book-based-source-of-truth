@@ -14,6 +14,9 @@ import { DropdownDirective } from './shared/directives/dropdown.directive';
 import { AppRoutingModule } from './app-routing.module';
 import { SingleBookFormComponent } from './bookshelf-page/single-book-form/single-book-form.component';
 import { AddBookNotificationComponent } from './library-page/add-book-notification/add-book-notification.component';
+import { TemplateDrivenApproachComponent } from './bookshelf-page/single-book-form/template-driven-approach/template-driven-approach.component';
+import { ReactiveApproachComponent } from './bookshelf-page/single-book-form/reactive-approach/reactive-approach.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -29,8 +32,10 @@ import { AddBookNotificationComponent } from './library-page/add-book-notificati
     DropdownDirective,
     SingleBookFormComponent,
     AddBookNotificationComponent,
+    TemplateDrivenApproachComponent,
+    ReactiveApproachComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
