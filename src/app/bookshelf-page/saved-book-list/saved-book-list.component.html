@@ -1,5 +1,5 @@
 <!-- Book List -->
-<div class="row" *ngFor="let book of mySavedBooks">
+<div class="row" *ngFor="let book of mySavedBooks | sortBooks : sortByField">
   <div class="col-md-12 book-list-container">
     <app-book [book]="book"></app-book>
     <button class="book-remove-btn" (click)="onRemoveBook(book.id)">
@@ -10,11 +10,15 @@
 
 <hr />
 
-<!-- Add Book Button -->
+<!-- Add Book & Sort Books Buttons -->
 <div class="row">
   <div class="col-md-12">
     <button class="btn btn-primary" (click)="navigateToNewBookRoute()">
       Add New Book
+    </button>
+
+    <button (click)="alternateSortingField()" class="btn btn-info">
+      Sort By {{ sortByField === "author" ? "Title" : "Author" }}
     </button>
   </div>
 </div>

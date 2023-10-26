@@ -54,7 +54,23 @@ export class BookshelfService {
   }
 
   // UPDATE - update an existing book
-  updateBook(updatedBook: Book) {}
+  updateBook(bookId: number, updatedBookVals: Partial<Book>) {
+    const bookIndex = this.mySavedBooks.findIndex((book) => book.id === bookId); // Get index of book to update
+
+    if (bookIndex !== -1) {
+      // We found the book, now we update it with new values
+      this.mySavedBooks[bookIndex] = {
+        ...this.mySavedBooks[bookIndex], // Spread operator to get all the existing values
+        ...updatedBookVals, // Spread operator to get all the updated values
+        id: bookId, // Ensure the book ID stays the same
+      };
+
+      this.bookListChanged.next(this.mySavedBooks.slice());
+    } else {
+      // Book wasn't found
+      console.error('Book not found!');
+    }
+  }
 
   // DELETE - delete an existing book
   deleteBookById(id: number) {

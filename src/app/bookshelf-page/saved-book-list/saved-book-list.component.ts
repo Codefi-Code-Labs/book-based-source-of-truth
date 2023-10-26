@@ -9,6 +9,7 @@ import { Book } from '../../shared/book/book.model';
 import { BookshelfService } from '../bookshelf.service';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { sortBookFieldT } from 'src/app/shared/pipes/sortBooks.pipe';
 
 @Component({
   selector: 'app-saved-book-list',
@@ -18,6 +19,7 @@ import { Subscription } from 'rxjs';
 export class SavedBookListComponent implements OnInit, OnDestroy {
   // * Properties
   @Output() bookSelected = new EventEmitter<Book>();
+  sortByField: sortBookFieldT = 'title';
   mySavedBooks: Book[] = [];
   mySavedBooksSub: Subscription;
 
@@ -35,7 +37,7 @@ export class SavedBookListComponent implements OnInit, OnDestroy {
     // Subscribe to the bookListChanged event
     this.mySavedBooksSub = this.bookshelfService.bookListChanged.subscribe(
       (updatedBookList: Book[]) => {
-        this.mySavedBooks = updatedBookList;
+        this.mySavedBooks = [...updatedBookList];
       }
     );
   }
@@ -53,5 +55,9 @@ export class SavedBookListComponent implements OnInit, OnDestroy {
 
   navigateToNewBookRoute() {
     this.router.navigate(['bookshelf', 'new']);
+  }
+
+  alternateSortingField() {
+    this.sortByField = this.sortByField === 'title' ? 'author' : 'title';
   }
 }

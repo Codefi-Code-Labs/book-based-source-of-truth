@@ -17,6 +17,7 @@ import { AddBookNotificationComponent } from './library-page/add-book-notificati
 import { TemplateDrivenApproachComponent } from './bookshelf-page/single-book-form/template-driven-approach/template-driven-approach.component';
 import { ReactiveApproachComponent } from './bookshelf-page/single-book-form/reactive-approach/reactive-approach.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SortBooksPipe } from './shared/pipes/sortBooks.pipe';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AddBookNotificationComponent,
     TemplateDrivenApproachComponent,
     ReactiveApproachComponent,
+    SortBooksPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

@@ -1,2 +1,75 @@
-<app-template-driven-approach></app-template-driven-approach>
-<!-- <app-reactive-approach></app-reactive-approach> -->
+<!-- * Template Driven Approach * -->
+<form (ngSubmit)="onFormSubmit(formRef)" #formRef="ngForm">
+  <!-- Title -->
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input
+      type="text"
+      id="title"
+      name="title"
+      class="form-control"
+      required
+      #titleRef="ngModel"
+      [ngModel]="isEditingBook ? bookDetails.title : null"
+    />
+
+    <!-- Error Message -->
+    <span
+      *ngIf="titleRef.touched && !titleRef.valid"
+      class="help-block text-danger"
+      >Please enter a valid title!</span
+    >
+  </div>
+
+  <!-- Author -->
+  <div class="form-group">
+    <label for="author">Author</label>
+    <input
+      type="text"
+      id="author"
+      name="author"
+      class="form-control"
+      required
+      #authorRef="ngModel"
+      [ngModel]="isEditingBook ? bookDetails.author : null"
+    />
+
+    <!-- Error Message -->
+    <span
+      *ngIf="authorRef.touched && !authorRef.valid"
+      class="help-block text-danger"
+      >Please enter a valid author!</span
+    >
+  </div>
+
+  <!-- Cover Image -->
+  <div class="form-group">
+    <label for="coverImg">Cover Image Path</label>
+    <input
+      type="text"
+      id="coverImg"
+      name="coverImg"
+      class="form-control"
+      required
+      #coverImgRef="ngModel"
+      [ngModel]="isEditingBook ? bookDetails.coverImg : null"
+    />
+
+    <!-- Error Message -->
+    <span
+      *ngIf="coverImgRef.touched && !coverImgRef.valid"
+      class="help-block text-danger"
+      >Please enter a valid URL Image Path!</span
+    >
+  </div>
+
+  <!-- Cancel Form -->
+  <button (click)="onResetForm()" type="button" class="btn btn-secondary mr-3">
+    Cancel
+  </button>
+
+  <!-- Submit Form -->
+  <button [disabled]="!formRef.valid" class="btn btn-primary" type="submit">
+    {{ isEditingBook ? "Update" : "Create" }}
+  </button>
+</form>
