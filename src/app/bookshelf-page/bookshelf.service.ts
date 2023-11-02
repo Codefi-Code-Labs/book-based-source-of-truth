@@ -7,26 +7,7 @@ import { Subject } from 'rxjs';
 })
 export class BookshelfService {
   // * Properties
-  private mySavedBooks: Book[] = [
-    new Book(
-      123,
-      '1984',
-      'George Orwell',
-      'https://source.unsplash.com/150x150/?1984'
-    ),
-    new Book(
-      456,
-      'To Kill a Mockingbird',
-      'Harper Lee',
-      'https://source.unsplash.com/150x150/?mockingbird'
-    ),
-    new Book(
-      789,
-      'The Great Gatsby',
-      'F. Scott Fitzgerald',
-      'https://source.unsplash.com/150x150/?gatsby'
-    ),
-  ];
+  private mySavedBooks: Book[] = [];
 
   // * Events
   bookListChanged = new Subject<Book[]>();
@@ -70,6 +51,12 @@ export class BookshelfService {
       // Book wasn't found
       console.error('Book not found!');
     }
+  }
+
+  // UPDATE - update all books
+  setBooks(books: Book[]) {
+    this.mySavedBooks = books;
+    this.bookListChanged.next(this.mySavedBooks.slice());
   }
 
   // DELETE - delete an existing book
