@@ -18,6 +18,7 @@ import { TemplateDrivenApproachComponent } from './bookshelf-page/single-book-fo
 import { ReactiveApproachComponent } from './bookshelf-page/single-book-form/reactive-approach/reactive-approach.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SortBooksPipe } from './shared/pipes/sortBooks.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,13 @@ import { SortBooksPipe } from './shared/pipes/sortBooks.pipe';
     ReactiveApproachComponent,
     SortBooksPipe,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
