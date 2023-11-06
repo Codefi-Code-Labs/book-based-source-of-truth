@@ -5,12 +5,19 @@ import { NgModule } from '@angular/core';
 import { SingleBookDetailsComponent } from './bookshelf-page/single-book-details/single-book-details.component';
 import { SingleBookFormComponent } from './bookshelf-page/single-book-form/single-book-form.component';
 import { bookResolver } from './bookshelf-page/bookshelf.resolver';
+import { AuthComponent } from './auth/auth.component';
+import { authGuard } from './auth/auth.guard';
 
 const appRoutes: Routes = [
-  { path: '', redirectTo: '/bookshelf', pathMatch: 'full' },
+  {
+    path: '',
+    redirectTo: '/bookshelf',
+    pathMatch: 'full',
+  },
   {
     path: 'bookshelf',
     component: BookshelfPageComponent,
+    canActivate: [authGuard],
     resolve: [bookResolver],
     children: [
       { path: 'new', component: SingleBookFormComponent },
@@ -26,7 +33,12 @@ const appRoutes: Routes = [
       },
     ],
   },
-  { path: 'library', component: LibraryPageComponent },
+  {
+    path: 'library',
+    component: LibraryPageComponent,
+    canActivate: [authGuard],
+  },
+  { path: 'auth', component: AuthComponent, canActivate: [authGuard] },
 ];
 
 @NgModule({

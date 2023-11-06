@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { DatabaseService } from '../services/database.service';
+import { DatabaseService } from '../db/database.service';
+import { AuthService } from 'src/app/auth/auth.service';
+import { Subscription } from 'rxjs';
 
 export type PageNameT = 'bookshelf' | 'library';
 
@@ -12,9 +14,25 @@ export class NavigationComponent {
   // * Properties
   collapsed: boolean = true;
   show: boolean = false;
+  isAuth: boolean = false;
+  currUserSub: Subscription;
 
   // * Constructor
-  constructor(private dbService: DatabaseService) {}
+  constructor(
+    private dbService: DatabaseService,
+    private authService: AuthService
+  ) {}
+
+  // * Lifecycle
+  ngOnInit() {
+    this.currUserSub = this.authService.currUser.subscribe((user) => {
+      this.isAuth = !!user;
+    });
+  }
+
+  ngOnDestroy() {
+    this.currUserSub.unsubscribe();
+  }
 
   // * Methods
   saveDataToDB() {
@@ -23,5 +41,9 @@ export class NavigationComponent {
 
   fetchDataFromDB() {
     this.dbService.getBooksFromDatabase();
+  }
+
+  handleSignOut() {
+    this.authService.signOut();
   }
 }

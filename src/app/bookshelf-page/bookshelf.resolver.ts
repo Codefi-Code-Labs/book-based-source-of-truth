@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 import { ResolveFn } from '@angular/router';
 import { Book } from '../shared/book/book.model';
 import { BookshelfService } from './bookshelf.service';
-import { DatabaseService } from '../shared/services/database.service';
+import { DatabaseService } from '../shared/db/database.service';
 
 export const bookResolver: ResolveFn<Book[]> = () => {
   const books = inject(BookshelfService).getSavedBooks();
