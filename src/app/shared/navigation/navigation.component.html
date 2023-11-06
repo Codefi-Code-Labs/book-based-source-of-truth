@@ -26,7 +26,8 @@
     >
       <!-- Main Navigation Items -->
       <ul class="navbar-nav mt-lg-0 mr-auto mt-2">
-        <li class="nav-item">
+        <!-- Bookshelf -->
+        <li class="nav-item" *ngIf="isAuth">
           <a
             class="nav-link"
             style="cursor: pointer"
@@ -36,13 +37,36 @@
           >
         </li>
 
-        <li class="nav-item">
+        <!-- Library -->
+        <li class="nav-item" *ngIf="isAuth">
           <a
             class="nav-link"
             style="cursor: pointer"
             routerLink="/library"
             routerLinkActive="active"
             >API Library</a
+          >
+        </li>
+
+        <!-- Auth -->
+        <li class="nav-item" *ngIf="!isAuth">
+          <a
+            class="nav-link"
+            style="cursor: pointer"
+            routerLink="/auth"
+            routerLinkActive="active"
+            >Auth</a
+          >
+        </li>
+
+        <!-- Sign Out -->
+        <li class="nav-item" *ngIf="isAuth" (click)="handleSignOut()">
+          <a
+            class="nav-link"
+            style="cursor: pointer"
+            routerLink="/auth"
+            routerLinkActive="active"
+            >Sign Out</a
           >
         </li>
       </ul>

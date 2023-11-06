@@ -18,7 +18,9 @@ import { TemplateDrivenApproachComponent } from './bookshelf-page/single-book-fo
 import { ReactiveApproachComponent } from './bookshelf-page/single-book-form/reactive-approach/reactive-approach.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SortBooksPipe } from './shared/pipes/sortBooks.pipe';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { AuthComponent } from './auth/auth.component';
+import { AuthInterceptorService } from './auth/auth-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -37,6 +39,7 @@ import { HttpClientModule } from '@angular/common/http';
     TemplateDrivenApproachComponent,
     ReactiveApproachComponent,
     SortBooksPipe,
+    AuthComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +48,13 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
